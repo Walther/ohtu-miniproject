@@ -1,0 +1,22 @@
+{
+  "name": "verbose-pancake",
+  "version": "0.0.1",
+  "description": "Delicious BibTeX generating web service",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Walther/verbose-pancake.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Walther/verbose-pancake/issues"
+  },
+  "homepage": "https://github.com/Walther/verbose-pancake#readme",
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  }
+}
