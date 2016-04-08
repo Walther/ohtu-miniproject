@@ -18,5 +18,13 @@
   "homepage": "https://github.com/Walther/verbose-pancake#readme",
   "devDependencies": {
     "mocha": "^2.4.5"
+  },
+  "engines": {
+    "node": "4.1.1"
+  },
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "fs": "0.0.2"
   }
 }
