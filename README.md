@@ -1,4 +1,5 @@
 ![travis](https://travis-ci.org/Walther/verbose-pancake.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/Walther/verbose-pancake/badge.svg?branch=master)](https://coveralls.io/github/Walther/verbose-pancake?branch=master)
 
 # ohtu-miniproject
 
