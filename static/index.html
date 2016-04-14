@@ -12,25 +12,61 @@
 <body>
   <script type="text/javascript" src="client.js"></script>
   <div class="container">
-    <header>
-      <h1>verbose pancake</h1>
-      <h2>Delicious web ui for cooking BibTeX files</h2>
+    <header class="page-header">
+      <h1>
+        verbose pancake
+        <small>Delicious web ui for cooking BibTeX files</small>
+      </h1>
     </header>
+    <h2>Insert new item</h2>
     <form>
-      <div class="form-group">
-        <label for="Title">Title</label>
-        <input type="text" class="form-control" id="Title" placeholder="Title">
-      </div>
       <div class="form-group">
         <label for="Author">Author</label>
         <input type="text" class="form-control" id="Author" placeholder="Author">
       </div>
       <div class="form-group">
-        <label for="Publisher">Publisher</label>
-        <input type="text" class="form-control" id="Publisher" placeholder="Publisher">
+        <label for="Title">Title</label>
+        <input type="text" class="form-control" id="Title" placeholder="Title">
+      </div>
+      <div class="form-group">
+        <label for="Journal">Journal</label>
+        <input type="text" class="form-control" id="Journal" placeholder="Journal">
+      </div>
+      <div class="form-group">
+        <label for="Volume">Volume</label>
+        <input type="number" class="form-control" id="Volume" placeholder="Volume">
+      </div>
+      <div class="form-group">
+        <label for="Year">Year</label>
+        <input type="number" class="form-control" id="Year" placeholder="Year">
+      </div>
+      <div class="form-group">
+        <label for="Pages">Pages</label>
+        <input type="number" class="form-control" id="Pages" placeholder="Pages">
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
+    <h2>List of items</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <tr>
+          <th>Author(s)</th>
+          <th>Title</th>
+          <th>Journal</th>
+          <th>Volume</th>
+          <th>Year</th>
+          <th>Pages</th>
+        </tr>
+        <tr>
+          <td>Fizz B., Quux Q.</td>
+          <td>Foo Bar in Baz</td>
+          <td>Lipsum Monthly</td>
+          <td>9001</td>
+          <td>2000</td>
+          <td>42-43</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </body>
 </html>
