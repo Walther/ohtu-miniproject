@@ -19,36 +19,36 @@
       </h1>
     </header>
     <h2>Insert new item</h2>
-    <form>
+    <form action="/submit" method="post">
       <div class="form-group">
         <label for="Author">Author</label>
-        <input type="text" class="form-control" id="Author" placeholder="Author">
+        <input type="text" class="form-control" id="Author" name="Author" placeholder="Author">
       </div>
       <div class="form-group">
         <label for="Title">Title</label>
-        <input type="text" class="form-control" id="Title" placeholder="Title">
+        <input type="text" class="form-control" id="Title" name="Title" placeholder="Title">
       </div>
       <div class="form-group">
         <label for="Journal">Journal</label>
-        <input type="text" class="form-control" id="Journal" placeholder="Journal">
+        <input type="text" class="form-control" id="Journal" name="Journal" placeholder="Journal">
       </div>
       <div class="form-group">
         <label for="Volume">Volume</label>
-        <input type="number" class="form-control" id="Volume" placeholder="Volume">
+        <input type="number" class="form-control" id="Volume" name="Volume" placeholder="Volume">
       </div>
       <div class="form-group">
         <label for="Year">Year</label>
-        <input type="number" class="form-control" id="Year" placeholder="Year">
+        <input type="number" class="form-control" id="Year" name="Year" placeholder="Year">
       </div>
       <div class="form-group">
         <label for="Pages">Pages</label>
-        <input type="number" class="form-control" id="Pages" placeholder="Pages">
+        <input type="number" class="form-control" id="Pages" name="Pages" placeholder="Pages">
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
     <h2>List of items</h2>
     <div class="table-responsive">
-      <table class="table table-striped">
+      <table class="table table-striped" id="citations">
         <tr>
           <th>Author(s)</th>
           <th>Title</th>
@@ -56,14 +56,6 @@
           <th>Volume</th>
           <th>Year</th>
           <th>Pages</th>
-        </tr>
-        <tr>
-          <td>Fizz B., Quux Q.</td>
-          <td>Foo Bar in Baz</td>
-          <td>Lipsum Monthly</td>
-          <td>9001</td>
-          <td>2000</td>
-          <td>42-43</td>
         </tr>
       </table>
     </div>
