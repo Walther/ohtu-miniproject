@@ -53,8 +53,28 @@ app.get('/list', function (req, res) {
       if(! /^\..*/.test(filename)) {
         filelist.push(filename);
       }
-    })
+    });
     res.send(JSON.stringify(filelist));
+  });
+});
+
+//BibTex Output
+app.get('/bibtex-list', function(req, res) {
+  fs.readdir(DATADIR, function (err, files) {
+    if (err) {
+      return console.log(err);
+    }
+    var arg = "";
+    files.forEach(function (filename) {
+        arg += (filename + ",");
+    });
+    arg = arg.substring(0, arg.length-1);
+    var spawn = require('child_process').spawn;
+    var process = spawn('python', ["./bibtexify.py",arg]);
+    console.log("BibTeX generated from list to bibtex-list.txt");
+    process.stdout.on('data', function(data) {
+      res.send(data);
+    });
   });
 });
 
