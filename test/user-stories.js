@@ -47,7 +47,7 @@ describe('when user requests bibtex file', function () {
 });
 
 describe('when user submits article', function () {
-  it('article is saved', function (done) {
+  it('server responds OK', function (done) {
     request.post('http://localhost:5000', {
       form:{
         Format:'article',
@@ -62,9 +62,25 @@ describe('when user submits article', function () {
       });
     done();
   });
+  it('article is saved into a file', function (done) {
+    var filelist = [];
+    fs.readdir(DATADIR, function (err, files) {
+      if (err) {
+        return console.log(err);
+      }
+      files.forEach(function (filename) {
+        if(! /^\..*/.test(filename)) {
+          filelist.push(filename);
+        }
+      });
+      filelist.length.should.equal(1);
+    });
+    done();
+  });
   it('bibtex will have article', function(done) {
     request.get('http://localhost:5000/references.bib', function (err, res, body) {
       res.statusCode.should.equal(200);
+      body.should.containEql("id");
       body.should.containEql("article");
       body.should.containEql("author");
       body.should.containEql("title");
@@ -90,9 +106,25 @@ describe('when user submits book', function () {
       });
     done();
   });
+  it('book is saved into a file', function (done) {
+    var filelist = [];
+    fs.readdir(DATADIR, function (err, files) {
+      if (err) {
+        return console.log(err);
+      }
+      files.forEach(function (filename) {
+        if(! /^\..*/.test(filename)) {
+          filelist.push(filename);
+        }
+      });
+      filelist.length.should.equal(1);
+    });
+    done();
+  });
   it('bibtex will have book', function(done) {
     request.get('http://localhost:5000/references.bib', function (err, res, body) {
       res.statusCode.should.equal(200);
+      body.should.containEql("id");
       body.should.containEql("book");
       body.should.containEql("author");
       body.should.containEql("title");
@@ -117,9 +149,25 @@ describe('when user submits inproceedings', function () {
       });
     done();
   });
+  it('article is saved into a file', function (done) {
+    var filelist = [];
+    fs.readdir(DATADIR, function (err, files) {
+      if (err) {
+        return console.log(err);
+      }
+      files.forEach(function (filename) {
+        if(! /^\..*/.test(filename)) {
+          filelist.push(filename);
+        }
+      });
+      filelist.length.should.equal(1);
+    });
+    done();
+  });
   it('bibtex will have inproceedings', function(done) {
     request.get('http://localhost:5000/references.bib', function (err, res, body) {
       res.statusCode.should.equal(200);
+      body.should.containEql("id");
       body.should.containEql("inproceedings");
       body.should.containEql("author");
       body.should.containEql("title");
