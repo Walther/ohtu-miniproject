@@ -20,6 +20,7 @@
     </header>
     <h2>Insert new article</h2>
     <form action="/submit" method="post">
+      <input type="hidden" name="Format" value="article">
       <div class="form-group">
         <label for="Author">Author</label>
         <input type="text" class="form-control" id="Author" name="Author" placeholder="Author">
@@ -49,6 +50,7 @@
 
     <h2>Insert new book</h2>
     <form action="/submit" method="post">
+      <input type="hidden" name="Format" value="book">
       <div class="form-group">
         <label for="Author">Author</label>
         <input type="text" class="form-control" id="Author" name="Author" placeholder="Author">
@@ -70,6 +72,7 @@
 
     <h2>Insert new inproceedings</h2>
     <form action="/submit" method="post">
+      <input type="hidden" name="Format" value="inproceedings">
       <div class="form-group">
         <label for="Author">Author</label>
         <input type="text" class="form-control" id="Author" name="Author" placeholder="Author">
