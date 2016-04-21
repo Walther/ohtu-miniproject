@@ -99,7 +99,6 @@ app.get('/references.bib', function(req, res) {
     arg = arg.substring(0, arg.length-1);
     var spawn = require('child_process').spawn;
     var process = spawn('python', ["./bibtexify.py",arg]);
-    console.log("BibTeX generated from lists to references.bib");
     process.stdout.on('data', function(data) {
       res.send(data);
     });
