@@ -90,12 +90,24 @@ describe('when user submits inproceedings', function () {
 
 describe('when user requests bibtex file', function () {
   it('bibtex file is provided', function (done) {
+    request.post('http://localhost:5000', {
+      form:{
+        Format:'article',
+        Author:'TestAuthor',
+        Title:'TestTitle',
+        Journal:'TestJournal',
+        Volume:'1',
+        Year:'2016',
+        Pages:'12'
+      }}, function(err,res,body){
+        res.should.equal(200);
+      });
     request.get('http://localhost:5000/references.bib', function (err, res, body) {
       res.statusCode.should.equal(200);
       body.should.containEql("article");
-      body.should.containEql("book");
-      body.should.containEql("inproceedings");
-      done();
+      body.should.containEql("TestTitle");
+      body.should.containEql("TestJournal");
     });
+    done();
   });
 });
