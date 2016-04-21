@@ -12,3 +12,9 @@ This is a coursework repository for [Ohjelmistotuotanto](https://www.cs.helsinki
 - [General info](https://github.com/mluukkai/ohtu2016/wiki/miniprojekti)
 - [Specifications](https://github.com/mluukkai/ohtu2016/wiki/miniprojekti-speksi)
 - [Burndown chart (requires login)](http://burndown.io/#Walther/verbose-pancake)
+
+## Definition of Done
+
+- Coveralls coverage > 90%
+- All behaviors tested
+- All required features implemented
