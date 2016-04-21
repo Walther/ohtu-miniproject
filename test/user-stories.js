@@ -170,7 +170,7 @@ describe('when user submits inproceedings', function () {
       });
     done();
   });
-  it('article is saved into a file', function (done) {
+  it('inproceeding is saved into a file', function (done) {
     var filelist = [];
     fs.readdir(DATADIR, function (err, files) {
       if (err) {
