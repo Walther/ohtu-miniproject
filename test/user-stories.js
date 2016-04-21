@@ -37,6 +37,15 @@ describe('when user goes to front page', function () {
   });
 });
 
+describe('when user requests bibtex file', function () {
+  it('bibtex file is provided', function (done) {
+    request.get('http://localhost:5000/references.bib', function (err, res, body) {
+      res.statusCode.should.equal(200);
+    });
+    done();
+  });
+});
+
 describe('when user submits article', function () {
   it('article is saved', function (done) {
     request.post('http://localhost:5000', {
@@ -51,6 +60,18 @@ describe('when user submits article', function () {
       }}, function(err,res,body){
         res.should.equal(200);
       });
+    done();
+  });
+  it('bibtex will have article', function(done) {
+    request.get('http://localhost:5000/references.bib', function (err, res, body) {
+      res.statusCode.should.equal(200);
+      body.should.containEql("article");
+      body.should.containEql("author");
+      body.should.containEql("title");
+      body.should.containEql("volume");
+      body.should.containEql("year");
+      body.should.containEql("pages");
+    });
     done();
   });
 });
@@ -69,6 +90,17 @@ describe('when user submits book', function () {
       });
     done();
   });
+  it('bibtex will have book', function(done) {
+    request.get('http://localhost:5000/references.bib', function (err, res, body) {
+      res.statusCode.should.equal(200);
+      body.should.containEql("book");
+      body.should.containEql("author");
+      body.should.containEql("title");
+      body.should.containEql("publisher");
+      body.should.containEql("year");
+    });
+    done();
+  });
 });
 
 describe('when user submits inproceedings', function () {
@@ -85,28 +117,14 @@ describe('when user submits inproceedings', function () {
       });
     done();
   });
-});
-
-
-describe('when user requests bibtex file', function () {
-  it('bibtex file is provided', function (done) {
-    request.post('http://localhost:5000', {
-      form:{
-        Format:'article',
-        Author:'TestAuthor',
-        Title:'TestTitle',
-        Journal:'TestJournal',
-        Volume:'1',
-        Year:'2016',
-        Pages:'12'
-      }}, function(err,res,body){
-        res.should.equal(200);
-      });
+  it('bibtex will have inproceedings', function(done) {
     request.get('http://localhost:5000/references.bib', function (err, res, body) {
       res.statusCode.should.equal(200);
-      body.should.containEql("article");
-      body.should.containEql("TestTitle");
-      body.should.containEql("TestJournal");
+      body.should.containEql("inproceedings");
+      body.should.containEql("author");
+      body.should.containEql("title");
+      body.should.containEql("booktitle");
+      body.should.containEql("year");
     });
     done();
   });
