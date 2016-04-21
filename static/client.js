@@ -48,7 +48,7 @@ window.onload = function(){
               publisher.innerHTML = blob.publisher;
               year.innerHTML      = blob.year;
             } else if (blob.format == "inproceedings") {
-              var row             = books.insertRow();
+              var row             = inproceedings.insertRow();
               var author          = row.insertCell(0);
               var title           = row.insertCell(1);
               var booktitle       = row.insertCell(2);
