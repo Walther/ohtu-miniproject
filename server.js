@@ -20,7 +20,6 @@ var DATADIR = __dirname + "/data/";
 // Form handling
 app.post('/submit', urlencodedParser, function (req, res) {
   // Creating a new Citation
-  console.log("Creating new Citation");
   var id      = shortid.generate();
   var format  = req.body.Format;
   var content;
