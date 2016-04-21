@@ -24,40 +24,40 @@ app.post('/submit', urlencodedParser, function (req, res) {
   var format  = req.body.Format;
   var content;
 
-
-  if (format == "article") {
-    content = {
-      "id"     : id,
-      "format" : "article",
-      "author" : req.body.Author,
-      "title"  : req.body.Title,
-      "journal": req.body.Journal,
-      "volume" : req.body.Volume,
-      "year"   : req.body.Year,
-      "pages"  : req.body.Pages
-    };
-  }
-
-  else if (format == "book") {
-    content = {
-      "id"        : id,
-      "format"    : "book",
-      "author"    : req.body.Author,
-      "title"     : req.body.Title,
-      "publisher" : req.body.Publisher,
-      "year"      : req.body.Year,
-    };
-  }
-
-  else if (format == "inproceedings") {
-    content = {
-      "id"        : id,
-      "format"    : "inproceedings",
-      "author"    : req.body.Author,
-      "title"     : req.body.Title,
-      "booktitle" : req.body.Booktitle,
-      "year"      : req.body.Year,
-    };
+  switch (format) {
+    case "article":
+      content = {
+        "id"     : id,
+        "format" : "article",
+        "author" : req.body.Author,
+        "title"  : req.body.Title,
+        "journal": req.body.Journal,
+        "volume" : req.body.Volume,
+        "year"   : req.body.Year,
+        "pages"  : req.body.Pages
+      };
+      break;
+    case "book":
+      content = {
+        "id"        : id,
+        "format"    : "book",
+        "author"    : req.body.Author,
+        "title"     : req.body.Title,
+        "publisher" : req.body.Publisher,
+        "year"      : req.body.Year,
+      };
+      break;
+    case "inproceedings":
+      content = {
+        "id"        : id,
+        "format"    : "inproceedings",
+        "author"    : req.body.Author,
+        "title"     : req.body.Title,
+        "booktitle" : req.body.Booktitle,
+        "year"      : req.body.Year,
+      };
+    default:
+      return;
   }
 
   filePath = DATADIR + id;
