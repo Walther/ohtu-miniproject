@@ -22,15 +22,44 @@ app.post('/submit', urlencodedParser, function (req, res) {
   // Creating a new Citation
   console.log("Creating new Citation");
   var id      = shortid.generate();
-  var content = {
-    "id"     : id,
-    "author" : req.body.Author,
-    "title"  : req.body.Title,
-    "journal": req.body.Journal,
-    "volume" : req.body.Volume,
-    "year"   : req.body.Year,
-    "pages"  : req.body.Pages
-  };
+  var format  = req.body.Format;
+  var content;
+
+
+  if (format == "article") {
+    content = {
+      "id"     : id,
+      "format" : "article",
+      "author" : req.body.Author,
+      "title"  : req.body.Title,
+      "journal": req.body.Journal,
+      "volume" : req.body.Volume,
+      "year"   : req.body.Year,
+      "pages"  : req.body.Pages
+    };
+  }
+
+  else if (format == "book") {
+    content = {
+      "id"        : id,
+      "format"    : "book",
+      "author"    : req.body.Author,
+      "title"     : req.body.Title,
+      "publisher" : req.body.Publisher,
+      "year"      : req.body.Year,
+    };
+  }
+
+  else if (format == "inproceedings") {
+    content = {
+      "id"        : id,
+      "format"    : "inproceedings",
+      "author"    : req.body.Author,
+      "title"     : req.body.Title,
+      "booktitle" : req.body.Booktitle,
+      "year"      : req.body.Year,
+    };
+  }
 
   filePath = DATADIR + id;
 
