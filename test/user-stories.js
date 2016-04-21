@@ -77,6 +77,17 @@ describe('when user submits article', function () {
     });
     done();
   });
+  it('article is found in listing', function(done) {
+    request.get('http://localhost:5000/list', function(err, res, body) {
+      body.should.containEql("article");
+      body.should.containEql("author");
+      body.should.containEql("title");
+      body.should.containEql("volume");
+      body.should.containEql("year");
+      body.should.containEql("pages");
+    });
+    done();
+  });
   it('bibtex will have article', function(done) {
     request.get('http://localhost:5000/references.bib', function (err, res, body) {
       res.statusCode.should.equal(200);
@@ -121,6 +132,16 @@ describe('when user submits book', function () {
     });
     done();
   });
+  it('book is found in listing', function(done) {
+    request.get('http://localhost:5000/list', function(err, res, body) {
+      body.should.containEql("book");
+      body.should.containEql("author");
+      body.should.containEql("title");
+      body.should.containEql("publisher");
+      body.should.containEql("year");
+    });
+    done();
+  });
   it('bibtex will have book', function(done) {
     request.get('http://localhost:5000/references.bib', function (err, res, body) {
       res.statusCode.should.equal(200);
@@ -161,6 +182,16 @@ describe('when user submits inproceedings', function () {
         }
       });
       filelist.length.should.equal(1);
+    });
+    done();
+  });
+  it('inproceeding is found in listing', function(done) {
+    request.get('http://localhost:5000/list', function(err, res, body) {
+      body.should.containEql("inproceeding");
+      body.should.containEql("author");
+      body.should.containEql("title");
+      body.should.containEql("booktitle");
+      body.should.containEql("year");
     });
     done();
   });
