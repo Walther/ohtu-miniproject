@@ -38,16 +38,15 @@ describe('when user goes to front page', function () {
 });
 
 describe('when user requests bibtex file', function () {
-  it('bibtex file is provided', function (done) {
+  it('bibtex file is provided', function () {
     request.get('http://localhost:5000/references.bib', function (err, res, body) {
       res.statusCode.should.equal(200);
     });
-    done();
   });
 });
 
 describe('when user submits article', function () {
-  it('server responds OK', function (done) {
+  it('server responds OK', function () {
     request.post('http://localhost:5000', {
       form:{
         Format:'article',
@@ -60,9 +59,8 @@ describe('when user submits article', function () {
       }}, function(err,res,body){
         res.should.equal(200);
       });
-    done();
   });
-  it('article is saved into a file', function (done) {
+  it('article is saved into a file', function () {
     var filelist = [];
     fs.readdir(DATADIR, function (err, files) {
       if (err) {
@@ -75,9 +73,8 @@ describe('when user submits article', function () {
       });
       filelist.length.should.equal(1);
     });
-    done();
   });
-  it('article is found in listing', function(done) {
+  it('article is found in listing', function() {
     request.get('http://localhost:5000/list', function(err, res, body) {
       body.should.containEql("article");
       body.should.containEql("author");
@@ -86,9 +83,8 @@ describe('when user submits article', function () {
       body.should.containEql("year");
       body.should.containEql("pages");
     });
-    done();
   });
-  it('bibtex will have article', function(done) {
+  it('bibtex will have article', function() {
     request.get('http://localhost:5000/references.bib', function (err, res, body) {
       res.statusCode.should.equal(200);
       body.should.containEql("id");
@@ -99,12 +95,11 @@ describe('when user submits article', function () {
       body.should.containEql("year");
       body.should.containEql("pages");
     });
-    done();
   });
 });
 
 describe('when user submits book', function () {
-  it('book is saved', function (done) {
+  it('book is saved', function () {
     request.post('http://localhost:5000', {
       form:{
         Format:'book',
@@ -115,9 +110,8 @@ describe('when user submits book', function () {
       }}, function(err,res,body){
         res.should.equal(200);
       });
-    done();
   });
-  it('book is saved into a file', function (done) {
+  it('book is saved into a file', function () {
     var filelist = [];
     fs.readdir(DATADIR, function (err, files) {
       if (err) {
@@ -130,9 +124,8 @@ describe('when user submits book', function () {
       });
       filelist.length.should.equal(1);
     });
-    done();
   });
-  it('book is found in listing', function(done) {
+  it('book is found in listing', function() {
     request.get('http://localhost:5000/list', function(err, res, body) {
       body.should.containEql("book");
       body.should.containEql("author");
@@ -140,9 +133,8 @@ describe('when user submits book', function () {
       body.should.containEql("publisher");
       body.should.containEql("year");
     });
-    done();
   });
-  it('bibtex will have book', function(done) {
+  it('bibtex will have book', function() {
     request.get('http://localhost:5000/references.bib', function (err, res, body) {
       res.statusCode.should.equal(200);
       body.should.containEql("id");
@@ -152,12 +144,11 @@ describe('when user submits book', function () {
       body.should.containEql("publisher");
       body.should.containEql("year");
     });
-    done();
   });
 });
 
 describe('when user submits inproceedings', function () {
-  it('inproceedings is saved', function (done) {
+  it('inproceedings is saved', function () {
     request.post('http://localhost:5000', {
       form:{
         Format:'inproceedings',
@@ -168,9 +159,8 @@ describe('when user submits inproceedings', function () {
       }}, function(err,res,body){
         res.should.equal(200);
       });
-    done();
   });
-  it('inproceeding is saved into a file', function (done) {
+  it('inproceeding is saved into a file', function () {
     var filelist = [];
     fs.readdir(DATADIR, function (err, files) {
       if (err) {
@@ -183,9 +173,8 @@ describe('when user submits inproceedings', function () {
       });
       filelist.length.should.equal(1);
     });
-    done();
   });
-  it('inproceeding is found in listing', function(done) {
+  it('inproceeding is found in listing', function() {
     request.get('http://localhost:5000/list', function(err, res, body) {
       body.should.containEql("inproceeding");
       body.should.containEql("author");
@@ -193,9 +182,8 @@ describe('when user submits inproceedings', function () {
       body.should.containEql("booktitle");
       body.should.containEql("year");
     });
-    done();
   });
-  it('bibtex will have inproceedings', function(done) {
+  it('bibtex will have inproceedings', function() {
     request.get('http://localhost:5000/references.bib', function (err, res, body) {
       res.statusCode.should.equal(200);
       body.should.containEql("id");
@@ -205,6 +193,5 @@ describe('when user submits inproceedings', function () {
       body.should.containEql("booktitle");
       body.should.containEql("year");
     });
-    done();
   });
 });
