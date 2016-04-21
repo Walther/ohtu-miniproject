@@ -10,11 +10,12 @@ if __name__ == '__main__':
     for filename in filenames:
         inputFile = open('./data/' + filename,'r')
         contents = json.loads(inputFile.read())
-        item = "@article{" + contents['id'] + ",\n"
+        referenceType = contents['format']
+        item = "@" + referenceType + "{" + contents['id'] + ",\n"
         contents.pop('id')
         for key in contents.keys():
-            item = item + key + " = " + contents[key] + ",\n"
-        item = item + "}\n\n"
+            item = item + key + " = \"" + contents[key] + "\",\n"
+        item = item[:-1] + "}\n\n"
         output.write(item)
         inputFile.close()
     output.close()
