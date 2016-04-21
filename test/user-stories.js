@@ -47,7 +47,7 @@ describe('when user requests bibtex file', function () {
 
 describe('when user submits article', function () {
   it('server responds OK', function () {
-    request.post('http://localhost:5000', {
+    request.post('http://localhost:5000/submit', {
       form:{
         Format:'article',
         Author:'TestAuthor',
@@ -100,7 +100,7 @@ describe('when user submits article', function () {
 
 describe('when user submits book', function () {
   it('book is saved', function () {
-    request.post('http://localhost:5000', {
+    request.post('http://localhost:5000/submit', {
       form:{
         Format:'book',
         Author:'TestAuthor',
@@ -149,7 +149,7 @@ describe('when user submits book', function () {
 
 describe('when user submits inproceedings', function () {
   it('inproceedings is saved', function () {
-    request.post('http://localhost:5000', {
+    request.post('http://localhost:5000/submit', {
       form:{
         Format:'inproceedings',
         Author:'TestAuthor',
