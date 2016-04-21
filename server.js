@@ -88,7 +88,7 @@ app.get('/list', function (req, res) {
 });
 
 //BibTex Output
-app.get('/bibtex-list', function(req, res) {
+app.get('/references.bib', function(req, res) {
   fs.readdir(DATADIR, function (err, files) {
     if (err) {
       return console.log(err);
