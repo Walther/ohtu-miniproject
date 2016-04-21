@@ -1,6 +1,8 @@
 window.onload = function(){
 
-  var citations = document.getElementById("citations");
+  var articles = document.getElementById("articles");
+  var books = document.getElementById("books");
+  var inproceedings = document.getElementById("inproceedings");
 
   // Get filelist
   fetch("/list")
@@ -19,19 +21,43 @@ window.onload = function(){
         .then(function (response) {
           response.json().then(function(blob) {
             console.log("Debug: response: " + JSON.stringify(blob));
-            var row = citations.insertRow();
-            var author = row.insertCell(0);
-            var title = row.insertCell(1);
-            var journal = row.insertCell(2);
-            var volume = row.insertCell(3);
-            var year = row.insertCell(4);
-            var pages = row.insertCell(5);
-            author.innerHTML = blob.author;
-            title.innerHTML = blob.title;
-            journal.innerHTML = blob.journal;
-            volume.innerHTML = blob.volume;
-            year.innerHTML = blob.year;
-            pages.innerHTML = blob.pages;
+
+            // If article
+            if (blob.format == "article") {
+              var row           = articles.insertRow();
+              var author        = row.insertCell(0);
+              var title         = row.insertCell(1);
+              var journal       = row.insertCell(2);
+              var volume        = row.insertCell(3);
+              var year          = row.insertCell(4);
+              var pages         = row.insertCell(5);
+              author.innerHTML  = blob.author;
+              title.innerHTML   = blob.title;
+              journal.innerHTML = blob.journal;
+              volume.innerHTML  = blob.volume;
+              year.innerHTML    = blob.year;
+              pages.innerHTML   = blob.pages;
+            } else if (blob.format == "book") {
+              var row             = books.insertRow();
+              var author          = row.insertCell(0);
+              var title           = row.insertCell(1);
+              var publisher       = row.insertCell(2);
+              var year            = row.insertCell(3);
+              author.innerHTML    = blob.author;
+              title.innerHTML     = blob.title;
+              publisher.innerHTML = blob.publisher;
+              year.innerHTML      = blob.year;
+            } else if (blob.format == "inproceedings") {
+              var row             = books.insertRow();
+              var author          = row.insertCell(0);
+              var title           = row.insertCell(1);
+              var booktitle       = row.insertCell(2);
+              var year            = row.insertCell(3);
+              author.innerHTML    = blob.author;
+              title.innerHTML     = blob.title;
+              booktitle.innerHTML = blob.booktitle;
+              year.innerHTML      = blob.year;
+            }
           })
         })
       })
