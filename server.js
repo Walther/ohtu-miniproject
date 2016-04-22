@@ -6,7 +6,7 @@ var fs         = require('fs');
 var dotenv     = require('dotenv');
 var shortid    = require('shortid');
 var bodyParser = require('body-parser');
-
+var rmdir = require('rimraf');
 
 // inits
 var app     = express();
@@ -16,6 +16,22 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 dotenv.load();
 var PORT    = process.env.PORT || 8080;
 var DATADIR = __dirname + "/data/";
+
+// Functions
+
+//Should clean given directory
+function cleanDataDir(directory) {
+  rmdir(('./' + directory + '/*'), function(error){
+    if(error) {
+      console.log(error);
+    } else {
+      console.log("Cleaned /data directory");
+    }
+  });
+}
+module.exports.cleanDataDir = function(error, directory) {
+  cleanDataDir(error, directory);
+};
 
 // Form handling
 app.post('/submit', urlencodedParser, function (req, res) {
@@ -108,13 +124,6 @@ app.get('/references.bib', function(req, res) {
 
 // Start server!
 app.listen(PORT, function () {
-  rmdir = require('rimraf');
-  rmdir('./data/*', function(error){
-    if(error) {
-      console.log(error);
-    } else {
-      console.log("Cleaned /data directory");
-    }
-  });
+  cleanDataDir('data');
   console.log('Running verbose pancake on port ' + PORT);
 });

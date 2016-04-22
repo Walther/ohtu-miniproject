@@ -6,7 +6,6 @@ var should  = require("should");
 var fs      = require("fs");
 var DATADIR = __dirname + "/../data/";
 
-
 describe('server', function () {
   before(function () {
     server.listen(5000);
@@ -14,6 +13,19 @@ describe('server', function () {
 
   after(function () {
     server.close();
+  });
+});
+
+describe('after server has started', function() {
+  it('data directory should be clean', function(done) {
+    server.cleanDataDir("error", "data");
+    fs.readdir(DATADIR, function(err,files) {
+      if(err) {
+        console.log(err);
+      }
+      files.length.should.equal(1); //.gitignore file
+    });
+    done();
   });
 });
 
