@@ -108,5 +108,13 @@ app.get('/references.bib', function(req, res) {
 
 // Start server!
 app.listen(PORT, function () {
+  rmdir = require('rimraf');
+  rmdir('./data/*', function(error){
+    if(error) {
+      console.log(error);
+    } else {
+      console.log("Cleaned /data directory");
+    }
+  });
   console.log('Running verbose pancake on port ' + PORT);
 });
