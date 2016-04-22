@@ -5,14 +5,14 @@ var express    = require('express');
 var fs         = require('fs');
 var dotenv     = require('dotenv');
 var shortid    = require('shortid');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 
 // inits
 var app     = express();
 app.use(express.static(__dirname + '/static'));
 app.use("/data", express.static(__dirname + '/data'));
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 dotenv.load();
 var PORT    = process.env.PORT || 8080;
 var DATADIR = __dirname + "/data/";
@@ -56,6 +56,7 @@ app.post('/submit', urlencodedParser, function (req, res) {
         "booktitle" : req.body.Booktitle,
         "year"      : req.body.Year,
       };
+      break;
     default:
       return;
   }
