@@ -3,6 +3,11 @@ window.onload = function(){
   var articles = document.getElementById("articles");
   var books = document.getElementById("books");
   var inproceedings = document.getElementById("inproceedings");
+  var incollections = document.getElementById("incollections");
+  var inbooks = document.getElementById("inbooks");
+  var mastertheses = document.getElementById("mastertheses");
+  var phdtheses = document.getElementById("phdtheses");
+  var techreports = document.getElementById("techreports");
 
   // Get filelist
   fetch("/list")
@@ -57,7 +62,61 @@ window.onload = function(){
               title.innerHTML     = blob.title;
               booktitle.innerHTML = blob.booktitle;
               year.innerHTML      = blob.year;
-            }
+            } else if (blob.format == "incollection") {
+              row             = incollections.insertRow();
+              author          = row.insertCell(0);
+              title           = row.insertCell(1);
+              booktitle       = row.insertCell(2);
+			  publisher       = row.insertCell(3);
+              year            = row.insertCell(4);
+              author.innerHTML    = blob.author;
+              title.innerHTML     = blob.title;
+              booktitle.innerHTML = blob.booktitle;
+			  publisher.innerHTML = blob.publisher;
+              year.innerHTML      = blob.year;
+			} else if (blob.format == "inbook") {
+              row             = inbooks.insertRow();
+              author          = row.insertCell(0);
+              title           = row.insertCell(1);
+              pages           = row.insertCell(2);
+			  publisher       = row.insertCell(3);
+              year            = row.insertCell(4);
+              author.innerHTML    = blob.author;
+              title.innerHTML     = blob.title;
+              pages.innerHTML 	  = blob.pages;
+			  publisher.innerHTML = blob.publisher;
+              year.innerHTML      = blob.year;
+			} else if (blob.format == "masterthesis") {
+              row             = mastertheses.insertRow();
+              author          = row.insertCell(0);
+              title           = row.insertCell(1);
+			  school       	  = row.insertCell(2);
+              year            = row.insertCell(3);
+              author.innerHTML    = blob.author;
+              title.innerHTML     = blob.title;
+              school.innerHTML 	  = blob.school;
+              year.innerHTML      = blob.year;
+			} else if (blob.format == "phdthesis") {
+              row             = phdtheses.insertRow();
+              author          = row.insertCell(0);
+              title           = row.insertCell(1);
+			  school       	  = row.insertCell(2);
+              year            = row.insertCell(3);
+              author.innerHTML    = blob.author;
+              title.innerHTML     = blob.title;
+              school.innerHTML 	  = blob.school;
+              year.innerHTML      = blob.year;
+			} else if (blob.format == "techreport") {
+              row             = techreports.insertRow();
+              author          = row.insertCell(0);
+              title           = row.insertCell(1);
+			  institution  	  = row.insertCell(2);
+              year            = row.insertCell(3);
+              author.innerHTML    	= blob.author;
+              title.innerHTML     	= blob.title;
+              institution.innerHTML = blob.school;
+              year.innerHTML      	= blob.year;
+			}
           });
         });
       });

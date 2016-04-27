@@ -99,6 +99,129 @@
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
       </div>
+	  <div class="col-md-4">
+        <h2>Insert new incollection</h2>
+        <form action="/submit" method="post">
+          <input type="hidden" name="Format" value="incollection">
+          <div class="form-group">
+            <label for="Author">Author</label>
+            <input type="text" class="form-control" id="Author" name="Author" placeholder="Author">
+          </div>
+          <div class="form-group">
+            <label for="Title">Title</label>
+            <input type="text" class="form-control" id="Title" name="Title" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <label for="Booktitle">Booktitle</label>
+            <input type="text" class="form-control" id="Booktitle" name="Booktitle" placeholder="Booktitle">
+          </div>
+		  <div class="form-group">
+            <label for="Publisher">Publisher</label>
+            <input type="text" class="form-control" id="Publisher" name="Publisher" placeholder="Publisher">
+          </div>
+          <div class="form-group">
+            <label for="Year">Year</label>
+            <input type="text" class="form-control" pattern="[0-9]{4}" title="Enter year in a four digit format" id="Year" name="Year" placeholder="Year">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+	  <div class="col-md-4">
+        <h2>Insert new inbook</h2>
+        <form action="/submit" method="post">
+          <input type="hidden" name="Format" value="inbook">
+          <div class="form-group">
+            <label for="Author">Author</label>
+            <input type="text" class="form-control" id="Author" name="Author" placeholder="Author">
+          </div>
+          <div class="form-group">
+            <label for="Title">Title</label>
+            <input type="text" class="form-control" id="Title" name="Title" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <label for="Pages">Pages</label>
+            <input type="text" class="form-control" id="Pages" name="Pages" placeholder="Pages">
+          </div>
+		  <div class="form-group">
+            <label for="Publisher">Publisher</label>
+            <input type="text" class="form-control" id="Publisher" name="Publisher" placeholder="Publisher">
+          </div>
+          <div class="form-group">
+            <label for="Year">Year</label>
+            <input type="text" class="form-control" pattern="[0-9]{4}" title="Enter year in a four digit format" id="Year" name="Year" placeholder="Year">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+	  <div class="col-md-4">
+        <h2>Insert new mastersthesis</h2>
+        <form action="/submit" method="post">
+          <input type="hidden" name="Format" value="mastersthesis">
+          <div class="form-group">
+            <label for="Author">Author</label>
+            <input type="text" class="form-control" id="Author" name="Author" placeholder="Author">
+          </div>
+          <div class="form-group">
+            <label for="Title">Title</label>
+            <input type="text" class="form-control" id="Title" name="Title" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <label for="School">School</label>
+            <input type="text" class="form-control" id="School" name="School" placeholder="School">
+          </div>
+          <div class="form-group">
+            <label for="Year">Year</label>
+            <input type="text" class="form-control" pattern="[0-9]{4}" title="Enter year in a four digit format" id="Year" name="Year" placeholder="Year">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+	  <div class="col-md-4">
+        <h2>Insert new phdthesis</h2>
+        <form action="/submit" method="post">
+          <input type="hidden" name="Format" value="phdthesis">
+          <div class="form-group">
+            <label for="Author">Author</label>
+            <input type="text" class="form-control" id="Author" name="Author" placeholder="Author">
+          </div>
+          <div class="form-group">
+            <label for="Title">Title</label>
+            <input type="text" class="form-control" id="Title" name="Title" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <label for="School">School</label>
+            <input type="text" class="form-control" id="School" name="School" placeholder="School">
+          </div>
+          <div class="form-group">
+            <label for="Year">Year</label>
+            <input type="text" class="form-control" pattern="[0-9]{4}" title="Enter year in a four digit format" id="Year" name="Year" placeholder="Year">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+	  <div class="col-md-4">
+        <h2>Insert new techreport</h2>
+        <form action="/submit" method="post">
+          <input type="hidden" name="Format" value="techreport">
+          <div class="form-group">
+            <label for="Author">Author</label>
+            <input type="text" class="form-control" id="Author" name="Author" placeholder="Author">
+          </div>
+          <div class="form-group">
+            <label for="Title">Title</label>
+            <input type="text" class="form-control" id="Title" name="Title" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <label for="Institution">Institution</label>
+            <input type="text" class="form-control" id="Institution" name="Institution" placeholder="Institution">
+          </div>
+          <div class="form-group">
+            <label for="Year">Year</label>
+            <input type="text" class="form-control" pattern="[0-9]{4}" title="Enter year in a four digit format" id="Year" name="Year" placeholder="Year">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
     </div>
 
     <!-- Forms row  2 -->
@@ -144,6 +267,68 @@
           </table>
         </div>
       </div>
+	  
+	  <h2>List of incollections</h2>
+        <div class="table-responsive">
+          <table class="table table-striped" id="incollections">
+            <tr>
+              <th>Author(s)</th>
+              <th>Title</th>
+              <th>Booktitle</th>
+			  <th>Publisher</th>
+              <th>Year</th>
+            </tr>
+          </table>
+        </div>
+		
+		<h2>List of inbooks</h2>
+        <div class="table-responsive">
+          <table class="table table-striped" id="inbooks">
+            <tr>
+              <th>Author(s)</th>
+              <th>Title</th>
+              <th>Pages</th>
+			  <th>Publisher</th>
+              <th>Year</th>
+            </tr>
+          </table>
+        </div>
+		
+		<h2>List of masterstheses</h2>
+        <div class="table-responsive">
+          <table class="table table-striped" id="masterstheses">
+            <tr>
+              <th>Author(s)</th>
+              <th>Title</th>
+              <th>School</th>
+              <th>Year</th>
+            </tr>
+          </table>
+        </div>
+		
+		<h2>List of phdtheses</h2>
+        <div class="table-responsive">
+          <table class="table table-striped" id="phdtheses">
+            <tr>
+              <th>Author(s)</th>
+              <th>Title</th>
+              <th>School</th>
+              <th>Year</th>
+            </tr>
+          </table>
+        </div>
+		
+		<h2>List of techreports</h2>
+        <div class="table-responsive">
+          <table class="table table-striped" id="techreports">
+            <tr>
+              <th>Author(s)</th>
+              <th>Title</th>
+              <th>Institution</th>
+              <th>Year</th>
+            </tr>
+          </table>
+        </div>
     </div>
 
     <!-- Download button -->

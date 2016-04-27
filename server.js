@@ -73,6 +73,68 @@ app.post('/submit', urlencodedParser, function (req, res) {
         "year"      : req.body.Year,
       };
       break;
+	case "inproceedings":
+      content = {
+        "id"        : id,
+        "format"    : "inproceedings",
+        "author"    : req.body.Author,
+        "title"     : req.body.Title,
+        "booktitle" : req.body.Booktitle,
+        "year"      : req.body.Year,
+      };
+	  break;
+	case "incollection":
+      content = {
+        "id"        : id,
+        "format"    : "incollection",
+        "author"    : req.body.Author,
+        "title"     : req.body.Title,
+        "booktitle" : req.body.Booktitle,
+		"publisher" : req.body.Publisher,
+        "year"      : req.body.Year,
+      };
+	  break;
+	case "inbook":
+      content = {
+        "id"        : id,
+        "format"    : "inbook",
+        "author"    : req.body.Author,
+        "title"     : req.body.Title,
+        "pages" 	: req.body.Pages,
+		"publisher" : req.body.Publisher,
+        "year"      : req.body.Year,
+      };  
+      break;
+	case "mastersthesis":
+      content = {
+        "id"        : id,
+        "format"    : "mastersthesis",
+        "author"    : req.body.Author,
+        "title"     : req.body.Title,
+		"school" 	: req.body.School,
+        "year"      : req.body.Year,
+      };  
+      break;  
+	case "phdthesis":
+      content = {
+        "id"        : id,
+        "format"    : "phdthesis",
+        "author"    : req.body.Author,
+        "title"     : req.body.Title,
+		"school" 	: req.body.School,
+        "year"      : req.body.Year,
+      };  
+      break;  
+	case "techreport":
+      content = {
+        "id"        	: id,
+        "format"    	: "techreport",
+        "author"    	: req.body.Author,
+        "title"     	: req.body.Title,
+		"institution" 	: req.body.Institution,
+        "year"     	 	: req.body.Year,
+      };  
+      break;  
     default:
       return;
   }
