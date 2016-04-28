@@ -72,16 +72,6 @@ app.post('/submit', urlencodedParser, function (req, res) {
         "booktitle" : req.body.Booktitle,
         "year"      : req.body.Year,
       };
-      break;
-	case "inproceedings":
-      content = {
-        "id"        : id,
-        "format"    : "inproceedings",
-        "author"    : req.body.Author,
-        "title"     : req.body.Title,
-        "booktitle" : req.body.Booktitle,
-        "year"      : req.body.Year,
-      };
 	  break;
 	case "incollection":
       content = {
