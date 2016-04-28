@@ -44,6 +44,10 @@ describe('when user goes to front page', function () {
       body.should.containEql("List of articles");
       body.should.containEql("List of books");
       body.should.containEql("List of inproceedings");
+      body.should.containEql("List of incollection");
+      body.should.containEql("List of inbook");
+      body.should.containEql("List of mastersthesis");
+      body.should.containEql("List of phdthesis");
       done();
     });
   });
@@ -319,11 +323,11 @@ describe('when user submits inbook', function () {
 });
 
 //Tests for masterthesis
-describe('when user submits masterthesis', function () {
+describe('when user submits mastersthesis', function () {
   it('server responds OK', function () {
     request.post('http://localhost:5000/submit', {
       form:{
-        Format:'masterthesis',
+        Format:'mastersthesis',
         Author:'TestAuthor',
         Title:'TestTitle',
         School:'TestSchool',
@@ -332,7 +336,7 @@ describe('when user submits masterthesis', function () {
         res.should.equal(200);
       });
   });
-  it('masterthesis is saved into a file', function () {
+  it('mastersthesis is saved into a file', function () {
     var filelist = [];
     fs.readdir(DATADIR, function (err, files) {
       if (err) {
@@ -346,20 +350,20 @@ describe('when user submits masterthesis', function () {
       filelist.length.should.equal(1);
     });
   });
-  it('masterthesis is found in listing', function() {
+  it('mastersthesis is found in listing', function() {
     request.get('http://localhost:5000/list', function(err, res, body) {
-      body.should.containEql("masterthesis");
+      body.should.containEql("mastersthesis");
       body.should.containEql("author");
       body.should.containEql("title");
       body.should.containEql("school");
       body.should.containEql("year");
     });
   });
-  it('bibtex will have masterthesis', function() {
+  it('bibtex will have mastersthesis', function() {
     request.get('http://localhost:5000/references.bib', function (err, res, body) {
       res.statusCode.should.equal(200);
       body.should.containEql("id");
-      body.should.containEql("masterthesis");
+      body.should.containEql("mastersthesis");
       body.should.containEql("author");
       body.should.containEql("title");
       body.should.containEql("school");
