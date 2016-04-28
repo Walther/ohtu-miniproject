@@ -46,8 +46,8 @@ describe('when user goes to front page', function () {
       body.should.containEql("List of inproceedings");
       body.should.containEql("List of incollection");
       body.should.containEql("List of inbook");
-      body.should.containEql("List of mastersthesis");
-      body.should.containEql("List of phdthesis");
+      body.should.containEql("List of masterstheses");
+      body.should.containEql("List of phdtheses");
       done();
     });
   });
