@@ -15,7 +15,8 @@ if __name__ == '__main__':
         item = "@" + referenceType + "{" + contents['id'] + ",\n"
         contents.pop('id')
         for key in contents.keys():
-            item = item + key + " = \"" + contents[key] + "\",\n"
+            if key not "tags":
+                item = item + key + " = \"" + contents[key] + "\",\n"
         item = item[:-2] + "\n" + "}\n\n"
         output.write(item)
         inputFile.close()
