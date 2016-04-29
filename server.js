@@ -50,7 +50,8 @@ app.post('/submit', urlencodedParser, function (req, res) {
         "journal": req.body.Journal,
         "volume" : req.body.Volume,
         "year"   : req.body.Year,
-        "pages"  : req.body.Pages
+        "pages"  : req.body.Pages,
+        "tags"   : req.body.Tags
       };
       break;
     case "book":
@@ -61,6 +62,7 @@ app.post('/submit', urlencodedParser, function (req, res) {
         "title"     : req.body.Title,
         "publisher" : req.body.Publisher,
         "year"      : req.body.Year,
+        "tags"      : req.body.Tags
       };
       break;
     case "inproceedings":
@@ -71,6 +73,7 @@ app.post('/submit', urlencodedParser, function (req, res) {
         "title"     : req.body.Title,
         "booktitle" : req.body.Booktitle,
         "year"      : req.body.Year,
+        "tags"      : req.body.Tags
       };
 	  break;
 	case "incollection":
@@ -80,8 +83,9 @@ app.post('/submit', urlencodedParser, function (req, res) {
         "author"    : req.body.Author,
         "title"     : req.body.Title,
         "booktitle" : req.body.Booktitle,
-		"publisher" : req.body.Publisher,
+		    "publisher" : req.body.Publisher,
         "year"      : req.body.Year,
+        "tags"      : req.body.Tags
       };
 	  break;
 	case "inbook":
@@ -90,10 +94,11 @@ app.post('/submit', urlencodedParser, function (req, res) {
         "format"    : "inbook",
         "author"    : req.body.Author,
         "title"     : req.body.Title,
-        "pages" 	: req.body.Pages,
-		"publisher" : req.body.Publisher,
+        "pages"   	: req.body.Pages,
+		    "publisher" : req.body.Publisher,
         "year"      : req.body.Year,
-      };  
+        "tags"      : req.body.Tags
+      };
       break;
 	case "mastersthesis":
       content = {
@@ -101,30 +106,33 @@ app.post('/submit', urlencodedParser, function (req, res) {
         "format"    : "mastersthesis",
         "author"    : req.body.Author,
         "title"     : req.body.Title,
-		"school" 	: req.body.School,
+		    "school" 	  : req.body.School,
         "year"      : req.body.Year,
-      };  
-      break;  
+        "tags"      : req.body.Tags
+      };
+      break;
 	case "phdthesis":
       content = {
         "id"        : id,
         "format"    : "phdthesis",
         "author"    : req.body.Author,
         "title"     : req.body.Title,
-		"school" 	: req.body.School,
+		    "school" 	  : req.body.School,
         "year"      : req.body.Year,
-      };  
-      break;  
+        "tags"      : req.body.Tags
+      };
+      break;
 	case "techreport":
       content = {
         "id"        	: id,
         "format"    	: "techreport",
         "author"    	: req.body.Author,
         "title"     	: req.body.Title,
-		"institution" 	: req.body.Institution,
+		    "institution"	: req.body.Institution,
         "year"     	 	: req.body.Year,
-      };  
-      break;  
+        "tags"        : req.body.Tags
+      };
+      break;
     default:
       return;
   }

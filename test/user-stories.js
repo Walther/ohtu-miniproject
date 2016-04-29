@@ -72,7 +72,8 @@ describe('when user submits article', function () {
         Journal:'TestJournal',
         Volume:'1',
         Year:'2016',
-        Pages:'12'
+        Pages:'12',
+        Tags: "foo"
       }}, function(err,res,body){
         res.should.equal(200);
       });
@@ -99,6 +100,7 @@ describe('when user submits article', function () {
       body.should.containEql("volume");
       body.should.containEql("year");
       body.should.containEql("pages");
+      body.should.containEql("tags");
     });
   });
   it('bibtex will have article', function() {
@@ -124,7 +126,8 @@ describe('when user submits book', function () {
         Author:'TestAuthor',
         Title:'TestTitle',
         Publisher:'TestPublisher',
-        Year:'2016'
+        Year:'2016',
+        Tags: "foo"
       }}, function(err,res,body){
         res.should.equal(200);
       });
@@ -150,6 +153,7 @@ describe('when user submits book', function () {
       body.should.containEql("title");
       body.should.containEql("publisher");
       body.should.containEql("year");
+      body.should.containEql("tags");
     });
   });
   it('bibtex will have book', function() {
@@ -174,7 +178,8 @@ describe('when user submits inproceedings', function () {
         Author:'TestAuthor',
         Title:'TestTitle',
         Booktitle:'TestBooktitle',
-        Year:'2016'
+        Year:'2016',
+        Tags: "foo"
       }}, function(err,res,body){
         res.should.equal(200);
       });
@@ -200,6 +205,7 @@ describe('when user submits inproceedings', function () {
       body.should.containEql("title");
       body.should.containEql("booktitle");
       body.should.containEql("year");
+      body.should.containEql("tags");
     });
   });
   it('bibtex will have inproceedings', function() {
@@ -226,7 +232,8 @@ describe('when user submits incollection', function () {
         Title:'TestTitle',
         Booktitle:'TestBooktitle',
 	Publisher:'TestPublisher',
-        Year:'2016'
+        Year:'2016',
+        Tags: "foo"
       }}, function(err,res,body){
         res.should.equal(200);
       });
@@ -253,6 +260,7 @@ describe('when user submits incollection', function () {
       body.should.containEql("booktitle");
       body.should.containEql("publisher");
       body.should.containEql("year");
+      body.should.containEql("tags");
     });
   });
   it('bibtex will have incollection', function() {
@@ -279,7 +287,8 @@ describe('when user submits inbook', function () {
         Title:'TestTitle',
         Publisher:'TestPublisher',
         Year:'2016',
-        Pages:'12'
+        Pages:'12',
+        Tags: "foo"
       }}, function(err,res,body){
         res.should.equal(200);
       });
@@ -306,6 +315,7 @@ describe('when user submits inbook', function () {
       body.should.containEql("publisher");
       body.should.containEql("year");
       body.should.containEql("pages");
+      body.should.containEql("tags");
     });
   });
   it('bibtex will have article', function() {
@@ -331,7 +341,8 @@ describe('when user submits mastersthesis', function () {
         Author:'TestAuthor',
         Title:'TestTitle',
         School:'TestSchool',
-        Year:'2016'
+        Year:'2016',
+        Tags: "foo"
       }}, function(err,res,body){
         res.should.equal(200);
       });
@@ -357,6 +368,7 @@ describe('when user submits mastersthesis', function () {
       body.should.containEql("title");
       body.should.containEql("school");
       body.should.containEql("year");
+      body.should.containEql("tags");
     });
   });
   it('bibtex will have mastersthesis', function() {
@@ -381,7 +393,8 @@ describe('when user submits phdthesis', function () {
         Author:'TestAuthor',
         Title:'TestTitle',
         School:'TestSchool',
-        Year:'2016'
+        Year:'2016',
+        Tags: "foo"
       }}, function(err,res,body){
         res.should.equal(200);
       });
@@ -407,6 +420,7 @@ describe('when user submits phdthesis', function () {
       body.should.containEql("title");
       body.should.containEql("school");
       body.should.containEql("year");
+      body.should.containEql("tags");
     });
   });
   it('bibtex will have phdthesis', function() {
@@ -432,7 +446,8 @@ describe('when user submits techreport', function () {
         Author:'TestAuthor',
         Title:'TestTitle',
         Institution:'TestInstitution',
-        Year:'2016'
+        Year:'2016',
+        Tags: "foo"
       }}, function(err,res,body){
         res.should.equal(200);
       });
@@ -458,6 +473,7 @@ describe('when user submits techreport', function () {
       body.should.containEql("title");
       body.should.containEql("institution");
       body.should.containEql("year");
+      body.should.containEql("tags");
     });
   });
   it('bibtex will have techreport', function() {
