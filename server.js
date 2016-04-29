@@ -98,7 +98,7 @@ app.post('/submit', urlencodedParser, function (req, res) {
 		    "publisher" : req.body.Publisher,
         "year"      : req.body.Year,
         "tags"      : req.body.Tags
-      };  
+      };
       break;
 	case "mastersthesis":
       content = {
@@ -109,8 +109,8 @@ app.post('/submit', urlencodedParser, function (req, res) {
 		    "school" 	  : req.body.School,
         "year"      : req.body.Year,
         "tags"      : req.body.Tags
-      };  
-      break;  
+      };
+      break;
 	case "phdthesis":
       content = {
         "id"        : id,
@@ -120,8 +120,8 @@ app.post('/submit', urlencodedParser, function (req, res) {
 		    "school" 	  : req.body.School,
         "year"      : req.body.Year,
         "tags"      : req.body.Tags
-      };  
-      break;  
+      };
+      break;
 	case "techreport":
       content = {
         "id"        	: id,
@@ -131,8 +131,8 @@ app.post('/submit', urlencodedParser, function (req, res) {
 		    "institution"	: req.body.Institution,
         "year"     	 	: req.body.Year,
         "tags"        : req.body.Tags
-      };  
-      break;  
+      };
+      break;
     default:
       return;
   }
