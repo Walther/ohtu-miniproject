@@ -221,7 +221,6 @@ describe('when user submits inproceedings', function () {
   });
 });
 
-//Tests for new forms. Added by Otto.
 //Tests for incollection
 describe('when user submits incollection', function () {
   it('incollection is saved', function () {
