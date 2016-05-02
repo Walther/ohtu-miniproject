@@ -8,6 +8,12 @@ window.onload = function(){
   var mastertheses = document.getElementById("mastertheses");
   var phdtheses = document.getElementById("phdtheses");
   var techreports = document.getElementById("techreports");
+  var conferences = document.getElementById("conferences");
+  var unpublished = document.getElementById("unpublished");
+  var proceedings = document.getElementById("proceedings");
+  var booklets = document.getElementById("booklets");
+  var manuals = document.getElementById("manuals");
+  var misc = document.getElementById("misc");
 
   // Get filelist
   fetch("/list")
@@ -116,6 +122,40 @@ window.onload = function(){
               title.innerHTML       = blob.title;
               institution.innerHTML = blob.school;
               year.innerHTML        = blob.year;
+			} else if (blob.format == "conference") {
+              row             = conference.insertRow();
+              author          = row.insertCell(0);
+              title           = row.insertCell(1);
+              booktitle       = row.insertCell(2);
+              year            = row.insertCell(3);
+              author.innerHTML    = blob.author;
+              title.innerHTML     = blob.title;
+              booktitle.innerHTML = blob.booktitle;
+              year.innerHTML      = blob.year;
+			} else if (blob.format == "unpublished") {
+              row             = unpublished.insertRow();
+              author          = row.insertCell(0);
+              title           = row.insertCell(1);
+              note     		  = row.insertCell(2);
+              author.innerHTML    = blob.author;
+              title.innerHTML     = blob.title;
+              note.innerHTML 	  = blob.note;
+			} else if (blob.format == "proceedings") {
+              row             = proceedings.insertRow();
+              title           = row.insertCell(0);
+              year            = row.insertCell(1);
+              title.innerHTML     = blob.title;
+              year.innerHTML      = blob.year;
+			} else if (blob.format == "booklet") {
+              row             = booklet.insertRow();
+              title           = row.insertCell(0);
+              title.innerHTML     = blob.title;
+			} else if (blob.format == "manual") {
+              row             = manual.insertRow();
+              title           = row.insertCell(0);
+              title.innerHTML     = blob.title;
+            } else if (blob.format == "misc") {
+              row             = misc.insertRow();            
             }
               tags                  = row.insertCell();
               tags.innerHTML        = blob.tags;

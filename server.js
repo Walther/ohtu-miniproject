@@ -83,7 +83,7 @@ app.post('/submit', urlencodedParser, function (req, res) {
         "author"    : req.body.Author,
         "title"     : req.body.Title,
         "booktitle" : req.body.Booktitle,
-		    "publisher" : req.body.Publisher,
+		"publisher" : req.body.Publisher,
         "year"      : req.body.Year,
         "tags"      : req.body.Tags
       };
@@ -95,7 +95,7 @@ app.post('/submit', urlencodedParser, function (req, res) {
         "author"    : req.body.Author,
         "title"     : req.body.Title,
         "pages"   	: req.body.Pages,
-		    "publisher" : req.body.Publisher,
+		"publisher" : req.body.Publisher,
         "year"      : req.body.Year,
         "tags"      : req.body.Tags
       };
@@ -106,7 +106,7 @@ app.post('/submit', urlencodedParser, function (req, res) {
         "format"    : "mastersthesis",
         "author"    : req.body.Author,
         "title"     : req.body.Title,
-		    "school" 	  : req.body.School,
+		"school" 	  : req.body.School,
         "year"      : req.body.Year,
         "tags"      : req.body.Tags
       };
@@ -117,7 +117,7 @@ app.post('/submit', urlencodedParser, function (req, res) {
         "format"    : "phdthesis",
         "author"    : req.body.Author,
         "title"     : req.body.Title,
-		    "school" 	  : req.body.School,
+		"school" 	  : req.body.School,
         "year"      : req.body.Year,
         "tags"      : req.body.Tags
       };
@@ -128,9 +128,62 @@ app.post('/submit', urlencodedParser, function (req, res) {
         "format"    	: "techreport",
         "author"    	: req.body.Author,
         "title"     	: req.body.Title,
-		    "institution"	: req.body.Institution,
+		"institution"	: req.body.Institution,
         "year"     	 	: req.body.Year,
-        "tags"        : req.body.Tags
+        "tags"          : req.body.Tags
+      };
+      break;
+	  case "conference":
+      content = {
+        "id"        	: id,
+        "format"    	: "conference",
+        "author"    	: req.body.Author,
+        "title"     	: req.body.Title,
+		"booktitle"		: req.body.Booktitle,
+        "year"     	 	: req.body.Year,
+        "tags"          : req.body.Tags
+      };
+      break;
+	  case "unpublished":
+      content = {
+        "id"        	: id,
+        "format"    	: "unpublished",
+        "author"    	: req.body.Author,
+        "title"     	: req.body.Title,
+        "note"     	 	: req.body.Note,
+        "tags"          : req.body.Tags
+      };
+      break;
+	  case "proceedings":
+      content = {
+        "id"        	: id,
+        "format"    	: "proceedings",
+        "title"     	: req.body.Title,
+        "year"     	 	: req.body.Year,
+        "tags"          : req.body.Tags
+      };
+      break;
+	  case "booklet":
+      content = {
+        "id"        	: id,
+        "format"    	: "booklet",
+        "title"     	: req.body.Title,
+        "tags"          : req.body.Tags
+      };
+      break;
+	  case "manual":
+      content = {
+        "id"        	: id,
+        "format"    	: "manual",
+        "title"     	: req.body.Title,
+        "tags"          : req.body.Tags
+      };
+      break;
+	  case "misc":
+      content = {
+        "id"        	: id,
+        "format"    	: "misc",
+        "tags"          : req.body.Tags
       };
       break;
     default:

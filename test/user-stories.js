@@ -48,6 +48,13 @@ describe('when user goes to front page', function () {
       body.should.containEql("List of inbook");
       body.should.containEql("List of masterstheses");
       body.should.containEql("List of phdtheses");
+	  body.should.containEql("List of techreports");
+      body.should.containEql("List of conferences");
+      body.should.containEql("List of unpublished");
+      body.should.containEql("List of proceedings");
+      body.should.containEql("List of booklets");
+      body.should.containEql("List of manuals");
+	  body.should.containEql("List of misc citations");
       done();
     });
   });
@@ -435,7 +442,6 @@ describe('when user submits phdthesis', function () {
   });
 });
 
-
 //Tests for techreport
 describe('when user submits techreport', function () {
   it('server responds OK', function () {
@@ -488,3 +494,276 @@ describe('when user submits techreport', function () {
   });
 });
 
+//Tests for conference
+describe('when user submits conference', function () {
+  it('server responds OK', function () {
+    request.post('http://localhost:5000/submit', {
+      form:{
+        Format:'conference',
+        Author:'TestAuthor',
+        Title:'TestTitle',
+        Booktitle:'TestBooktitle',
+        Year:'2016',
+        Tags: "foo"
+      }}, function(err,res,body){
+        res.should.equal(200);
+      });
+  });
+  it('conference is saved into a file', function () {
+    var filelist = [];
+    fs.readdir(DATADIR, function (err, files) {
+      if (err) {
+        return console.log(err);
+      }
+      files.forEach(function (filename) {
+        if(! /^\..*/.test(filename)) {
+          filelist.push(filename);
+        }
+      });
+      filelist.length.should.equal(1);
+    });
+  });
+  it('conference is found in listing', function() {
+    request.get('http://localhost:5000/list', function(err, res, body) {
+      body.should.containEql("conference");
+      body.should.containEql("author");
+      body.should.containEql("title");
+      body.should.containEql("booktitle");
+      body.should.containEql("year");
+      body.should.containEql("tags");
+    });
+  });
+  it('bibtex will have conference', function() {
+    request.get('http://localhost:5000/references.bib', function (err, res, body) {
+      res.statusCode.should.equal(200);
+      body.should.containEql("id");
+      body.should.containEql("conference");
+      body.should.containEql("author");
+      body.should.containEql("title");
+      body.should.containEql("booktitle");
+      body.should.containEql("year");
+    });
+  });
+});
+
+//Tests for unpublished
+describe('when user submits unpublished', function () {
+  it('server responds OK', function () {
+    request.post('http://localhost:5000/submit', {
+      form:{
+        Format:'unpublished',
+        Author:'TestAuthor',
+        Title:'TestTitle',
+        Note:'TestNote',
+        Tags: "foo"
+      }}, function(err,res,body){
+        res.should.equal(200);
+      });
+  });
+  it('unpublished is saved into a file', function () {
+    var filelist = [];
+    fs.readdir(DATADIR, function (err, files) {
+      if (err) {
+        return console.log(err);
+      }
+      files.forEach(function (filename) {
+        if(! /^\..*/.test(filename)) {
+          filelist.push(filename);
+        }
+      });
+      filelist.length.should.equal(1);
+    });
+  });
+  it('unpublished is found in listing', function() {
+    request.get('http://localhost:5000/list', function(err, res, body) {
+      body.should.containEql("unpublished");
+      body.should.containEql("author");
+      body.should.containEql("title");
+      body.should.containEql("note");
+      body.should.containEql("tags");
+    });
+  });
+  it('bibtex will have unpublished', function() {
+    request.get('http://localhost:5000/references.bib', function (err, res, body) {
+      res.statusCode.should.equal(200);
+      body.should.containEql("id");
+      body.should.containEql("unpublished");
+      body.should.containEql("author");
+      body.should.containEql("title");
+      body.should.containEql("note");
+    });
+  });
+});
+
+//Tests for proceedings
+describe('when user submits proceedings', function () {
+  it('server responds OK', function () {
+    request.post('http://localhost:5000/submit', {
+      form:{
+        Format:'proceedings',
+        Title:'TestTitle',
+        Year:'2016',
+        Tags: "foo"
+      }}, function(err,res,body){
+        res.should.equal(200);
+      });
+  });
+  it('proceedings is saved into a file', function () {
+    var filelist = [];
+    fs.readdir(DATADIR, function (err, files) {
+      if (err) {
+        return console.log(err);
+      }
+      files.forEach(function (filename) {
+        if(! /^\..*/.test(filename)) {
+          filelist.push(filename);
+        }
+      });
+      filelist.length.should.equal(1);
+    });
+  });
+  it('proceedings is found in listing', function() {
+    request.get('http://localhost:5000/list', function(err, res, body) {
+      body.should.containEql("proceedings");
+      body.should.containEql("title");
+      body.should.containEql("year");
+      body.should.containEql("tags");
+    });
+  });
+  it('bibtex will have proceedings', function() {
+    request.get('http://localhost:5000/references.bib', function (err, res, body) {
+      res.statusCode.should.equal(200);
+      body.should.containEql("id");
+      body.should.containEql("proceedings");
+      body.should.containEql("title");
+      body.should.containEql("year");
+      body.should.containEql("note");
+    });
+  });
+});
+
+//Tests for booklet
+describe('when user submits booklet', function () {
+  it('server responds OK', function () {
+    request.post('http://localhost:5000/submit', {
+      form:{
+        Format:'booklet',
+        Title:'TestTitle',
+        Tags: "foo"
+      }}, function(err,res,body){
+        res.should.equal(200);
+      });
+  });
+  it('booklet is saved into a file', function () {
+    var filelist = [];
+    fs.readdir(DATADIR, function (err, files) {
+      if (err) {
+        return console.log(err);
+      }
+      files.forEach(function (filename) {
+        if(! /^\..*/.test(filename)) {
+          filelist.push(filename);
+        }
+      });
+      filelist.length.should.equal(1);
+    });
+  });
+  it('booklet is found in listing', function() {
+    request.get('http://localhost:5000/list', function(err, res, body) {
+      body.should.containEql("booklets");
+      body.should.containEql("title");
+      body.should.containEql("tags");
+    });
+  });
+  it('bibtex will have booklet', function() {
+    request.get('http://localhost:5000/references.bib', function (err, res, body) {
+      res.statusCode.should.equal(200);
+      body.should.containEql("id");
+      body.should.containEql("booklet");
+      body.should.containEql("title");
+    });
+  });
+});
+
+//Tests for manual
+describe('when user submits manual', function () {
+  it('server responds OK', function () {
+    request.post('http://localhost:5000/submit', {
+      form:{
+        Format:'manual',
+        Title:'TestTitle',
+        Tags: "foo"
+      }}, function(err,res,body){
+        res.should.equal(200);
+      });
+  });
+  it('manual is saved into a file', function () {
+    var filelist = [];
+    fs.readdir(DATADIR, function (err, files) {
+      if (err) {
+        return console.log(err);
+      }
+      files.forEach(function (filename) {
+        if(! /^\..*/.test(filename)) {
+          filelist.push(filename);
+        }
+      });
+      filelist.length.should.equal(1);
+    });
+  });
+  it('manual is found in listing', function() {
+    request.get('http://localhost:5000/list', function(err, res, body) {
+      body.should.containEql("manuals");
+      body.should.containEql("title");
+      body.should.containEql("tags");
+    });
+  });
+  it('bibtex will have manual', function() {
+    request.get('http://localhost:5000/references.bib', function (err, res, body) {
+      res.statusCode.should.equal(200);
+      body.should.containEql("id");
+      body.should.containEql("manual");
+      body.should.containEql("title");
+    });
+  });
+});
+
+//Tests for misc citation
+describe('when user submits misc citation', function () {
+  it('server responds OK', function () {
+    request.post('http://localhost:5000/submit', {
+      form:{
+        Format:'misc',
+        Tags: "foo"
+      }}, function(err,res,body){
+        res.should.equal(200);
+      });
+  });
+  it('misc citation is saved into a file', function () {
+    var filelist = [];
+    fs.readdir(DATADIR, function (err, files) {
+      if (err) {
+        return console.log(err);
+      }
+      files.forEach(function (filename) {
+        if(! /^\..*/.test(filename)) {
+          filelist.push(filename);
+        }
+      });
+      filelist.length.should.equal(1);
+    });
+  });
+  it('misc citation is found in listing', function() {
+    request.get('http://localhost:5000/list', function(err, res, body) {
+      body.should.containEql("misc citation");
+      body.should.containEql("tags");
+    });
+  });
+  it('bibtex will have misc citation', function() {
+    request.get('http://localhost:5000/references.bib', function (err, res, body) {
+      res.statusCode.should.equal(200);
+      body.should.containEql("id");
+      body.should.containEql("misc");
+    });
+  });
+});
