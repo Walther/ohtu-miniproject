@@ -175,3 +175,9 @@ var edit = function(id) {
   // for all cells, change into input with pre-filled content
 
 }
+
+var save = function(id) {
+  console.log("Saving: " + id);
+  // send a post request to some server url with a proper handler
+  // like app.post(/edit/:id, ...)
+}

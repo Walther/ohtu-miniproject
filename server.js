@@ -217,6 +217,30 @@ app.get('/list', function (req, res) {
   });
 });
 
+// TODO: Handle editing request
+app.post('/edit/:id', function (req, res) {
+  fs.readFile(DATADIR + req.params.id, 'utf8', function (err,data) {
+    if (err) {
+      return console.log(err);
+    };
+
+    // Read current contents of the file
+    var temp = JSON.parse(data);
+
+    // Update the fields with the values received in POST
+
+
+    // Write the edited file into place
+    fs.writeFile(DATADIR + req.params.id, JSON.stringify(temp), function(err) {
+      if(err) {
+        return console.log(err);
+      };
+    });
+    res.sendStatus(200);
+  })
+}
+})
+
 //BibTex Output
 app.get('/references.bib', function(req, res) {
   fs.readdir(DATADIR, function (err, files) {
