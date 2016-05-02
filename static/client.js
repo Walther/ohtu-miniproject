@@ -1,19 +1,19 @@
 window.onload = function(){
 
-  var articles = document.getElementById("articles");
-  var books = document.getElementById("books");
+  var articles      = document.getElementById("articles");
+  var books         = document.getElementById("books");
   var inproceedings = document.getElementById("inproceedings");
   var incollections = document.getElementById("incollections");
-  var inbooks = document.getElementById("inbooks");
-  var mastertheses = document.getElementById("mastertheses");
-  var phdtheses = document.getElementById("phdtheses");
-  var techreports = document.getElementById("techreports");
-  var conferences = document.getElementById("conferences");
-  var unpublished = document.getElementById("unpublished");
-  var proceedings = document.getElementById("proceedings");
-  var booklets = document.getElementById("booklets");
-  var manuals = document.getElementById("manuals");
-  var misc = document.getElementById("misc");
+  var inbooks       = document.getElementById("inbooks");
+  var mastertheses  = document.getElementById("mastertheses");
+  var phdtheses     = document.getElementById("phdtheses");
+  var techreports   = document.getElementById("techreports");
+  var conferences   = document.getElementById("conferences");
+  var unpublisheds  = document.getElementById("unpublisheds");
+  var proceedings   = document.getElementById("proceedings");
+  var booklets      = document.getElementById("booklets");
+  var manuals       = document.getElementById("manuals");
+  var miscs         = document.getElementById("misc");
 
   // Get filelist
   fetch("/list")
@@ -123,7 +123,7 @@ window.onload = function(){
               institution.innerHTML = blob.school;
               year.innerHTML        = blob.year;
             } else if (blob.format  == "conference") {
-              row                   = conference.insertRow();
+              row                   = conferences.insertRow();
               author                = row.insertCell(0);
               title                 = row.insertCell(1);
               booktitle             = row.insertCell(2);
@@ -133,7 +133,7 @@ window.onload = function(){
               booktitle.innerHTML   = blob.booktitle;
               year.innerHTML        = blob.year;
             } else if (blob.format  == "unpublished") {
-              row                   = unpublished.insertRow();
+              row                   = unpublisheds.insertRow();
               author                = row.insertCell(0);
               title                 = row.insertCell(1);
               note 		              = row.insertCell(2);
@@ -147,15 +147,15 @@ window.onload = function(){
               title.innerHTML       = blob.title;
               year.innerHTML        = blob.year;
             } else if (blob.format  == "booklet") {
-              row                   = booklet.insertRow();
+              row                   = booklets.insertRow();
               title                 = row.insertCell(0);
               title.innerHTML       = blob.title;
             } else if (blob.format  == "manual") {
-              row                   = manual.insertRow();
+              row                   = manuals.insertRow();
               title                 = row.insertCell(0);
               title.innerHTML       = blob.title;
             } else if (blob.format  == "misc") {
-              row                   = misc.insertRow();
+              row                   = miscs.insertRow();
             }
             tags                    = row.insertCell();
             tags.innerHTML          = blob.tags;
