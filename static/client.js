@@ -33,7 +33,6 @@ window.onload = function(){
           response.json().then(function(blob) {
             console.log("Debug: response: " + JSON.stringify(blob));
             var row, author, title, journal,volume,pages,year,publisher,booktitle,tags;
-            // If article
             if (blob.format         == "article") {
               row                   = articles.insertRow();
               author                = row.insertCell(0);
@@ -157,10 +156,11 @@ window.onload = function(){
             } else if (blob.format  == "misc") {
               row                   = miscs.insertRow();
             }
+            row.id                  = blob.id;
             tags                    = row.insertCell();
             tags.innerHTML          = blob.tags;
             buttons                 = row.insertCell();
-            buttons.innerHTML       = "<button class='btn btn-default btn-sm'>Edit</button>"
+            buttons.innerHTML       = "<button class='btn btn-default btn-sm' onClick='edit("+blob.id+")'>Edit</button>"
           });
         });
       });
@@ -168,3 +168,7 @@ window.onload = function(){
   });
 
 };
+
+var edit = function(id) {
+  console.log("Editing: " + id);
+}

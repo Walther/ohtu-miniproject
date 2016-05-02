@@ -16,6 +16,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 dotenv.load();
 var PORT    = process.env.PORT || 8080;
 var DATADIR = __dirname + "/data/";
+shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_$');
 
 // Functions
 
