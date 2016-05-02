@@ -160,7 +160,7 @@ window.onload = function(){
             tags                    = row.insertCell();
             tags.innerHTML          = blob.tags;
             buttons                 = row.insertCell();
-            buttons.innerHTML       = "<button class='btn btn-default btn-sm' onClick='edit("+blob.id+")'>Edit</button>"
+            buttons.innerHTML       = "<button class='btn btn-default btn-sm' onClick='edit("+blob.id+")'>Edit</button><button class='btn btn-success btn-sm' onClick='save("+blob.id+")'>Save</button>"
           });
         });
       });
@@ -171,4 +171,7 @@ window.onload = function(){
 
 var edit = function(id) {
   console.log("Editing: " + id);
+  row = window.getElementById(id);
+  // for all cells, change into input with pre-filled content
+
 }
