@@ -2,6 +2,7 @@
 
 // imports
 var express    = require('express');
+var http    = require('http');
 var fs         = require('fs');
 var dotenv     = require('dotenv');
 var shortid    = require('shortid');
@@ -16,6 +17,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 dotenv.load();
 var PORT    = process.env.PORT || 8080;
 var DATADIR = __dirname + "/data/";
+var toedit = "";
 
 // Functions
 
@@ -33,6 +35,21 @@ module.exports.cleanDataDir = function(error, directory) {
   cleanDataDir(error, directory);
 };
 
+app.get('/edit', function(req,res) {
+  var id = req.url.split("=")[1];
+  console.log(id);
+  res.setHeader('Content-Type', 'application/json');
+  fs.readFile(DATADIR + id, function(error, data) {
+    if (error) console.log(error);
+    toedit = JSON.parse(data);
+    fs.readFile('./edit.html', function (err, html) {
+      if (err) throw err;
+      res.writeHead(200, {"Content-Type": "text/html"});
+      res.write(html);
+      res.end();
+    });
+  });
+});
 // Form handling
 app.post('/submit', urlencodedParser, function (req, res) {
   // Creating a new Citation

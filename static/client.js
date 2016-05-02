@@ -15,6 +15,8 @@ window.onload = function(){
   var manuals       = document.getElementById("manuals");
   var miscs         = document.getElementById("misc");
 
+
+
   // Get filelist
   fetch("/list")
   .then(function (response) {
@@ -32,7 +34,7 @@ window.onload = function(){
         .then(function (response) {
           response.json().then(function(blob) {
             console.log("Debug: response: " + JSON.stringify(blob));
-            var row, author, title, journal,volume,pages,year,publisher,booktitle,tags;
+            var row, author, title, journal,volume,pages,year,publisher,booktitle,tags,edit;
             // If article
             if (blob.format         == "article") {
               row                   = articles.insertRow();
@@ -158,7 +160,9 @@ window.onload = function(){
               row                   = miscs.insertRow();
             }
             tags                    = row.insertCell();
+            edit                    = row.insertCell();
             tags.innerHTML          = blob.tags;
+            edit.innerHTML          = "<a href='/edit.html' onclick='return edit()' class='btn btn-default'>Edit</a>";
           });
         });
       });
