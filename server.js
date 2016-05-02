@@ -238,7 +238,6 @@ app.post('/edit/:id', function (req, res) {
     });
     res.sendStatus(200);
   })
-}
 })
 
 //BibTex Output
