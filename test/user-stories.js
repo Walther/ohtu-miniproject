@@ -48,6 +48,13 @@ describe('when user goes to front page', function () {
       body.should.containEql("List of inbook");
       body.should.containEql("List of masterstheses");
       body.should.containEql("List of phdtheses");
+	  body.should.containEql("List of techreports");
+      body.should.containEql("List of conferences");
+      body.should.containEql("List of unpublished");
+      body.should.containEql("List of proceedings");
+      body.should.containEql("List of booklets");
+      body.should.containEql("List of manuals");
+	  body.should.containEql("List of misc citations");
       done();
     });
   });
