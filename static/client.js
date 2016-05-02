@@ -159,6 +159,8 @@ window.onload = function(){
             }
             tags                    = row.insertCell();
             tags.innerHTML          = blob.tags;
+            buttons                 = row.insertCell();
+            buttons.innerHTML       = "<button class='btn btn-default btn-sm'>Edit</button>"
           });
         });
       });
