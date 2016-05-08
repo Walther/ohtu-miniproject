@@ -12,6 +12,7 @@ This is a coursework repository for [Ohjelmistotuotanto](https://www.cs.helsinki
 - [General info](https://github.com/mluukkai/ohtu2016/wiki/miniprojekti)
 - [Specifications](https://github.com/mluukkai/ohtu2016/wiki/miniprojekti-speksi)
 - [Burndown chart (requires login)](http://burndown.io/#Walther/verbose-pancake)
+- [Final report](https://docs.google.com/document/d/1llcu7_GA2UDb8q1851Bb_4a3jsv6J64xRgEgs_adxok/)
 
 ## Definition of Done
 
